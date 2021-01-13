@@ -1,41 +1,31 @@
 package io.pivotal.pal.tracker;
 
 import java.time.LocalDate;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class TimeEntry {
-
-    private static AtomicInteger atomicInteger = new AtomicInteger(0);
-
     private long id;
     private long projectId;
     private long userId;
     private LocalDate date;
     private int hours;
 
-    public TimeEntry(long id) {
-        this.id = id;
-    }
-
     public TimeEntry() {
-
     }
 
-    public TimeEntry(long projectId, long userId, LocalDate parse, int i) {
-        this.id = atomicInteger.incrementAndGet();
+    public TimeEntry(long projectId, long userId, LocalDate date, int hours) {
         this.projectId = projectId;
         this.userId = userId;
-        this.date = parse;
-        this.hours = i;
+        this.date = date;
+        this.hours = hours;
     }
 
-    public TimeEntry(long timeEntryId, long projectId, long userId, LocalDate parse, int i) {
-        this.id = timeEntryId;
+    public TimeEntry(long id, long projectId, long userId, LocalDate date, int hours) {
+        this.id = id;
         this.projectId = projectId;
         this.userId = userId;
-        this.date = parse;
-        this.hours = i;
+        this.date = date;
+        this.hours = hours;
     }
 
     public long getId() {
@@ -50,32 +40,16 @@ public class TimeEntry {
         return projectId;
     }
 
-    public void setProjectId(long projectId) {
-        this.projectId = projectId;
-    }
-
     public long getUserId() {
         return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
     }
 
     public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public int getHours() {
         return hours;
-    }
-
-    public void setHours(int hours) {
-        this.hours = hours;
     }
 
     @Override
